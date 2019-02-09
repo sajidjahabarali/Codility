@@ -1,5 +1,38 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Solution {
-    public int solution(int[] A) {
+
+    public static void main(String[] args){
+        System.out.println("Type numbers for list. \nType f if finished.");
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        String input = scanner.nextLine();
+        while(!input.equals("f")){
+            try{
+                numbers.add(Integer.parseInt(input));
+                input = scanner.nextLine();
+            }
+            catch(NumberFormatException e){
+                if(!input.equals("f")) {
+                    System.out.println("Please type a number to add to the list or f to exit.");
+                }
+            }
+        }
+
+        int[] A = new int[numbers.size()];
+
+        for(int i = 0; i<numbers.size(); i++){
+            A[i] = numbers.get(i);
+        }
+
+        int result = solution(A);
+        System.out.println(result);
+
+    }
+
+
+    public static int solution(int[] A) {
         // write your code in Java SE 8
         if (A.length == 1) {
             return A[0];
